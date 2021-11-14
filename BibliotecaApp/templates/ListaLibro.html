@@ -1,0 +1,14 @@
+%  extends "base.html" %}
+
+{%  block contenido  %}
+    <ul>
+{%  for lib in lista_libros %}
+    <li>
+        {{ lib.id }}: {{ lib.nombre }} {<a href="{% url 'detalleLibro' lib.id  %}"> Ver</a>}
+    </li>
+    {% endfor %}
+    </ul>
+
+
+
+{%  endblock %}

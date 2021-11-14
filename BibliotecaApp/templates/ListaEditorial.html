@@ -1,0 +1,14 @@
+{%  extends "base.html" %}
+
+{%  block contenido  %}
+    <ul>
+{%  for edit in lista_escritores %}
+    <li>
+        {{ edit.id }}: {{ edit.nombre }} {<a href="{% url 'detalleEditorial' edit.id  %}"> Ver</a>}
+    </li>
+    {% endfor %}
+    </ul>
+
+
+
+{%  endblock %}

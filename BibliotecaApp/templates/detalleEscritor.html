@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalles del empleado {% endblock %}
+
+{% block contenido %}
+
+<h2>Datos del escritor</h2>
+
+{% if escritor %}
+    <ul>
+        <li>
+            {{ escritor.nombre}}
+        </li>
+        <li>
+            {{ escritor.fecha_nacimiento}}
+        </li>
+        <li>
+
+        </li>
+        <li>
+            <a href="/BibliotecaApp/editorial/{{ escritor.editorial.id }}">{{ escritor.editorial}}</a>
+        </li>
+    </ul>
+	<h3>Lista de libros</h3>
+	{% if libros %}
+		<ol>
+		{% for l in libros %}
+			<li><a href="/BibliotecaApp/libros/{{ l.id }}">{{ l.nombre}}</a></li>
+		{% endfor %}
+		</ol>
+	{% else %}
+		<p>No tiene libros asociados.</p>
+	{% endif %}
+{% else %}
+    <p>No existe este escritor.</p>
+{% endif %}
+
+{% endblock %}

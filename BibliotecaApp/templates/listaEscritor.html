@@ -1,0 +1,14 @@
+{%  extends "base.html" %}
+
+{%  block contenido  %}
+    <ul>
+{%  for esc in lista_escritores %}
+    <li>
+        {{ esc.id }}: {{ esc.nombre }} {<a href="{% url 'detalleEscritor' esc.id  %}"> Ver</a>}
+    </li>
+    {% endfor %}
+    </ul>
+
+
+
+{%  endblock %}
