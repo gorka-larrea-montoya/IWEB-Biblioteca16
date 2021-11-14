@@ -12,28 +12,34 @@ Visualizar la lista de autores, que además permita ir a otra vista para ver los
 lista de libros del mismo. """
 
 
-# devuelve portada
+# devuelve portada todo
 def index(request):
     return ("TODO PORTADA")
 
-
+#todo
 def listaEscritor(request):
     # return HttpResponse("Hello, World , Biblioteca Edition")
     escritores = get_list_or_404(Escritor.objects.order_by("nombre"))
     output = ",".join([a.nombre for a in escritores])
     return HttpResponse(output)
 
-
+#todo
 def detalleEscritor(request, escritor_id):
     return
 
 
 def listaEditorial(request):
-    return
+    editoriales = get_list_or_404(Editorial.objects.order_by("nombre"))
+    context = {"Editorial": editoriales}
+    return render(request, "ListaEditoriales.html", editoriales)
 
 
+#todo
 def detalleEditorial(request, editorial_id):
-    return
+    editorial = get_object_or_404(Editorial, pk=editorial_id)
+    #libros = get_list_or_404() TODO encontrar una manera de pasar los libros que comparten la editorial
+    #context =
+    return request(request,"detalleEditorial.html",context)
 
 
 # devuelve el listado de libros
