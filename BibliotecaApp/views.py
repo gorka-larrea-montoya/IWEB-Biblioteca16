@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, Http404
-from .models import Libro, Escritor, Editorial, RelacionBiblioteca
+from .models import Libro, Escritor, Editorial
 
 # Create your views here.
 """[E2] Funcionalidades básicas (2 puntos) Personalización de una plantilla (estructura de varios niveles) y sus 
@@ -14,7 +14,7 @@ lista de libros del mismo. """
 
 # devuelve portada
 def index(request):
-    return
+    return ("TODO PORTADA")
 
 
 def listaEscritor(request):
@@ -40,10 +40,14 @@ def detalleEditorial(request, editorial_id):
 def listaLibro(request):
     libros = get_list_or_404((Libro.objects.order_by("nombre")))
     output = output = ', '.join([e.nombre for e in libros])
-    return HttpResponse(output)
+    context = {"libro": libros}
+    return render(request,"listaLibro.html",context)
 
 
 # devuelve los detalles de un libro
 def detalleLibro(request, libro_id):
     libro = get_object_or_404(Libro, pk=libro_id)
-    escritor = get_object_or_404(RelacionBiblioteca.escritor_id)
+    escritor = libro.escritor_set.all()
+    editorial = libro.editorial
+    context = {"escritor" : escritor, "editorial": editorial }
+    return render(request, "detalleLibro", context)
