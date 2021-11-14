@@ -1,14 +1,10 @@
-{%  extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 
-{%  block contenido  %}
-    <ul>
-{%  for edit in lista_escritores %}
-    <li>
-        {{ edit.id }}: {{ edit.nombre }} {<a href="{% url 'detalleEditorial' edit.id  %}"> Ver</a>}
-    </li>
-    {% endfor %}
-    </ul>
-
-
-
-{%  endblock %}
+</body>
+</html>
