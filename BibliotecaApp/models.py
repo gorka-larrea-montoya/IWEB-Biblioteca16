@@ -18,3 +18,5 @@ class Editorial(models.Model):
 
 class RelacionBiblioteca(models.Model):
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    escritor = models.ForeignKey(Escritor, on_delete=models.CASCADE)
+    editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
